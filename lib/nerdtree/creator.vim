@@ -26,6 +26,7 @@ function! s:Creator._bindMappings()
     command! -buffer -nargs=0 ClearAllBookmarks call g:NERDTreeBookmark.ClearAll() <bar> call b:NERDTree.render()
     command! -buffer -nargs=0 ReadBookmarks call g:NERDTreeBookmark.CacheBookmarks(0) <bar> call b:NERDTree.render()
     command! -buffer -nargs=0 WriteBookmarks call g:NERDTreeBookmark.Write()
+    command! -buffer -nargs=0 EditBookmarks call g:NERDTreeBookmark.Edit()
 endfunction
 
 " FUNCTION: s:Creator._broadcastInitEvent() {{{1
@@ -217,14 +218,14 @@ function! s:Creator.New()
     return newCreator
 endfunction
 
-" FUNCTION: s:Creator._nextBufferName() {{{2
+" FUNCTION: s:Creator._nextBufferName() {{{1
 " returns the buffer name for the next nerd tree
 function! s:Creator._nextBufferName()
     let name = s:Creator.BufNamePrefix() . self._nextBufferNumber()
     return name
 endfunction
 
-" FUNCTION: s:Creator._nextBufferNumber() {{{2
+" FUNCTION: s:Creator._nextBufferNumber() {{{1
 " the number to add to the nerd tree buffer name to make the buf name unique
 function! s:Creator._nextBufferNumber()
     if !exists("s:Creator._NextBufNum")
